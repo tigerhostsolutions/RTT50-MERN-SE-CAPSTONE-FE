@@ -17,7 +17,8 @@ const Login = () => {
       const loginData = { email, password };
 
       // Send request to backend
-      const response = await axios.post('http://<YOUR_BACKEND_URL>/api/login', loginData);
+      const login = import.meta.env.VITE_LOGIN_URL;
+      const response = await axios.post(`${login}`, loginData);
 
       // Handle success: Display message and optionally do further actions
       setMessage('Login successful!');
