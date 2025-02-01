@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios'; // Import Axios
 
 const Registration = () => {
   const [name, setName] = useState('');
@@ -6,29 +7,46 @@ const Registration = () => {
   const [gender, setGender] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [error, setError] = useState(''); // For error messages
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); //prevents reload
 
-    //Simulate User Data saved, output to the console
-    const userData = {
-      name, age, gender, email,
-    };
-    console.log('User Registered:', userData);
+    try{
+      //Prepare the request body
+      const userData = {
+        name, age, gender, email,
+      };
+      console.log(userData); //debugging
 
-    //Simulate Thank You message
-    setMessage(`Thank you for registering, ${name}`);
+      //Send API request using Axios
+      const response = await axios.post('http://localhost:3000/bsocial/registration',
+          userData);
 
-    //Clear form fields
-    setName('');
-    setAge('');
-    setGender('');
-    setEmail('');
+      //Handle Success
+      setMessage(response.data.message || 'Registration successful!')
+
+      //Clear form fields
+      setName('');
+      setAge('');
+      setGender('');
+      setEmail('');
+    } catch (err) {
+      //Handle Errors
+      if (err.response && err.response.data) {
+        setError(err.response.data.message || 'An error occurred during' +
+            ' registration.');
+      } else {
+        //General or network error
+        setError('Unable to connect to the server. Please try again later.');
+      }
+    }
   };
 
   return (<div >
     <h1 >Register</h1 >
     {message && <p style = {{color: 'green'}} >{message}</p >}
+    {error && <p style={{ color: 'red' }}>{error}</p>}
 
     <form onSubmit = {handleSubmit} >
       <label >Name:
@@ -37,6 +55,7 @@ const Registration = () => {
             name = "name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
         />
       </label >
       <br />
@@ -47,6 +66,7 @@ const Registration = () => {
             name = "age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
+            required
         />
       </label >
       <br />
@@ -56,7 +76,9 @@ const Registration = () => {
             name = "gender"
             value={gender}
             onChange={(e) => setGender(e.target.value)}
+            required
         >
+          <option value="">Select</option> {/* Empty value to enforce selection */}
           <option value = "male" >Male</option >
           <option value = "female" >Female</option >
           <option value = "other" >Other</option >
@@ -70,6 +92,7 @@ const Registration = () => {
             name = "email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
         />
       </label >
       <br />
