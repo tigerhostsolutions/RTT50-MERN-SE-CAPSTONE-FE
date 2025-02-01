@@ -6,6 +6,7 @@ const Registration = () => {
   const [age, setAge] = useState('');
   const [gender, setGender] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState(''); // For error messages
 
@@ -15,13 +16,14 @@ const Registration = () => {
     try{
       //Prepare the request body
       const userData = {
-        name, age, gender, email,
+        name, age, gender, email, password,
       };
       console.log(userData); //debugging
 
       //Send API request using Axios
-      const registration = import.meta.env.VITE_REGISTRATION_URL;
-      const response = await axios.post(`${registration}`,userData);
+      // const registration = import.meta.env.VITE_REGISTRATION_URL;
+      // const response = await axios.post(`${registration}`,userData);
+      const response = await axios.post(`http://localhost:3000/bsocial/register`,userData);
 
       //Handle Success
       setMessage(response.data.message || 'Registration successful!')
@@ -31,6 +33,7 @@ const Registration = () => {
       setAge('');
       setGender('');
       setEmail('');
+      setPassword('');
     } catch (err) {
       //Handle Errors
       if (err.response && err.response.data) {
@@ -92,6 +95,17 @@ const Registration = () => {
             name = "email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+        />
+      </label >
+      <br />
+
+      <label >Password:
+        <input
+            type = "password"
+            name = "password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
         />
       </label >
