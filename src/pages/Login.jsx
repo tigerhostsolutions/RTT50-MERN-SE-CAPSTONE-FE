@@ -2,18 +2,20 @@ import React from 'react';
 
 const Login = () => {
   return (
-      <div>
-        <h1>Login</h1>
-        <form>
-          <label>Email:</label>
-          <input type="email" name="email" />
+      <div >
+        <h1 >Login</h1 >
+        <form >
+          <label >Email:
+            <input type = "email" name = "email" />
+          </label >
           <br />
-          <label>Password:</label>
-          <input type="password" name="password" />
+          <label >Password:
+            <input type = "password" name = "password" />
+          </label >
           <br />
-          <button type="submit">Login</button>
-        </form>
-      </div>
+          <button type = "submit" >Login</button >
+        </form >
+      </div >
   );
 };
 
