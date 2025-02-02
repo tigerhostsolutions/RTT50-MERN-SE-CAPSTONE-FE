@@ -15,7 +15,6 @@ const Login = () => {
     try {
       // Prepare login data
       const loginData = { email, password };
-
       // Send request to backend
       // const login = import.meta.env.VITE_LOGIN_URL;
       // const response = await axios.post(`${login}`, loginData);
