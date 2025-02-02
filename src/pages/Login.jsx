@@ -19,7 +19,7 @@ const Login = () => {
       // Send request to backend
       // const login = import.meta.env.VITE_LOGIN_URL;
       // const response = await axios.post(`${login}`, loginData);
-      const response = await axios.post(`http://localhost:3000/bsocial/login`, loginData);
+      const response = await axios.post(`http://localhost:3000/login`, loginData);
 
       // Handle success: Display message and optionally do further actions
       setMessage('Login successful!');

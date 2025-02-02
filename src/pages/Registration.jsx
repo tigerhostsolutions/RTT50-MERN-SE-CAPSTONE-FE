@@ -23,7 +23,7 @@ const Registration = () => {
       //Send API request using Axios
       // const registration = import.meta.env.VITE_REGISTRATION_URL;
       // const response = await axios.post(`${registration}`,userData);
-      const response = await axios.post(`http://localhost:3000/bsocial/register`,userData);
+      const response = await axios.post(`http://localhost:3000/register`,userData);
 
       //Handle Success
       setMessage(response.data.message || 'Registration successful!')
