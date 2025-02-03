@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Registration from './pages/Registration';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import ProtectedRoute from 'src/components/ProtectedRoute.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 import './App.css';
 
 function App() {
