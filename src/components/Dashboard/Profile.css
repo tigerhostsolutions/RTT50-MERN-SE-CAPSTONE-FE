@@ -1,0 +1,13 @@
+/* File: Profile.css */
+.profile-dashboard {
+    padding: 20px;
+}
+
+.profile-image img {
+    border-radius: 50%;
+}
+
+.user-info,
+.user-bio {
+    margin-top: 20px;
+}
