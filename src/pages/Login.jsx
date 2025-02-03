@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   // State variables for form data and messages
@@ -7,6 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // For navigation after login
 
   // Handle form submission
   const handleSubmit = async (e) => {
@@ -16,9 +18,11 @@ const Login = () => {
       // Prepare login data
       const loginData = { email, password };
       // Send request to backend
-      // const login = import.meta.env.VITE_LOGIN_URL;
-      // const response = await axios.post(`${login}`, loginData);
       const response = await axios.post(`http://localhost:3000/login`, loginData);
+
+      // Extract the token from the response and store it
+      const token = response.data.token;
+      localStorage.setItem('authToken', token); // Store token in localStorage
 
       // Handle success: Display message and optionally do further actions
       setMessage('Login successful!');
@@ -28,8 +32,13 @@ const Login = () => {
       // Clear form fields
       setEmail('');
       setPassword('');
+
+      // Navigate to the dashboard
+      navigate('/dashboard'); // Redirect to Dashboard
+
     } catch (err) {
-      // Handle error: Set error message
+      // Handle login errors:
+      setMessage('');
       if (err.response && err.response.data) {
         // Error response from backend
         setError(err.response.data.message || 'Invalid email or password. Please try again.');
