@@ -4,7 +4,10 @@ import axios from 'axios';
 const Dashboard = () => {
   const [data, setData] = useState(null);
   const token = localStorage.getItem('authToken');
-
+  if (!token) {
+    console.error('No authentication token found!');
+    // Redirect to login or show an error message
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
