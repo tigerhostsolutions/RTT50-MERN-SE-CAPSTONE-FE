@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Registration from './pages/Registration';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import ProfileDashboard from "./components/Dashboard/ProfileDashboard";
+
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import './App.css';
 
@@ -21,6 +23,12 @@ function App() {
             <Route path="/dashboard" element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            } />
+
+            <Route path="/dashboard" element={
+              <ProtectedRoute>
+                <ProfileDashboard />
               </ProtectedRoute>
             } />
           </Routes>
