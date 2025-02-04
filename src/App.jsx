@@ -13,7 +13,7 @@ function App() {
   return (
       <Router>
         <div className="App">
-          <h1>BSocial Match Makers</h1>
+          <h1>Social Match Makers</h1>
           <Routes>
             {/*Public Routes*/}
             <Route path="/register" element={<Registration />} />
