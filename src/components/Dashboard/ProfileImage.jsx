@@ -6,7 +6,7 @@ const ProfileImage = () => {
       <div className="profile-image">
         <img
             src="https://via.placeholder.com/150"
-            alt="User Profile"
+            alt="Member Profile"
             width={150}
             height={150}
         />
