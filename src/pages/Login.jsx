@@ -19,7 +19,7 @@ const Login = () => {
       // Prepare login data
       const loginData = { email, password };
       // Send request to backend
-      const response = await axios.post(`http://localhost:3000/login`, loginData);
+      const response = await axios.post(`http://localhost:3000/api/login`, loginData);
 
       // Extract the token from the response and store it
       const token = response.data.token;
