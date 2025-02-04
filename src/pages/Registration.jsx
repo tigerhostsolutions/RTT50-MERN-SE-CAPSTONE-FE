@@ -33,12 +33,12 @@ const Registration = () => {
       }
       try {
         // Send API request using Axios
-        const response = await axios.post(
-            `${process.env.VITE_APP_API_URL}/api/register`, formData, {
-              headers: {
-                'Content-Type': 'multipart/form-data', // Multipart request
-              },
-            });
+        const apiUrl = import.meta.env.VITE_API_URL;
+        const response = await axios.post(`${apiUrl}/api/register`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
         // Handle success
         setMessage(response.data.message || 'Registration successful!');
       }
