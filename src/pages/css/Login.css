@@ -1,0 +1,124 @@
+/* Login.css */
+
+body {
+  font-family: 'Inter', sans-serif; /* You can load this from Google Fonts */
+  background-color: #f7f8fc;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Fullscreen height */
+  color: #333;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-card {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: center;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.success-message {
+  color: #16a34a;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #4b5563;
+  text-align: left;
+}
+
+.form-input {
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 4px rgba(59, 130, 246, 0.4);
+}
+
+.submit-button {
+  background-color: #3b82f6;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #2563eb;
+}
+
+.login-footer {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.login-footer a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+.image-preview-container {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.image-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #d1d5db;
+}

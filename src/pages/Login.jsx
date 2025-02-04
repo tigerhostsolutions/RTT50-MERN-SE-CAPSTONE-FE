@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './css/Login.css';
 
 const Login = () => {
   // State variables for form data and messages
@@ -50,33 +51,41 @@ const Login = () => {
   };
 
   return (
-      <div>
-        <h1>Login</h1>
-        {message && <p style={{ color: 'green' }}>{message}</p>}
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <form onSubmit={handleSubmit}>
-          <label>Email:</label>
-          <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-          />
-          <br />
-          <label>Password:</label>
-          <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-          />
-          <br />
-          <button type="submit">Login</button>
-        </form>
+      <div className="login-container">
+        <div className="login-card">
+          <h1 className="login-title">Welcome Back</h1>
+          {message && <p className="success-message">{message}</p>}
+          {error && <p className="error-message">{error}</p>}
+          <form onSubmit={handleSubmit} className="login-form">
+            <label htmlFor="email" className="form-label">Email</label>
+            <input
+                type="email"
+                id="email"
+                className="form-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Enter your email"
+            />
+            <label htmlFor="password" className="form-label">Password</label>
+            <input
+                type="password"
+                id="password"
+                className="form-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="Enter your password"
+            />
+            <button type="submit" className="submit-button">Login</button>
+          </form>
+          <p className="login-footer">
+            Don't have an account? <a href="/register" target="_blank">Sign up</a>
+          </p>
+        </div>
       </div>
   );
 };
+
 
 export default Login;
