@@ -12,7 +12,8 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/dashboard', {
+        const apiUrl = import.meta.env.VITE_API_URL;
+        const response = await axios.get(`${apiUrl}/api/dashboard`, {
           // headers: { Authorization: `Bearer ${token}` },
         });
         setData(response.data);
@@ -26,7 +27,7 @@ const Dashboard = () => {
 
   return (
       <div>
-        <h1>Dating Dashboard</h1>
+        <h1>Dashboard</h1>
         <p>Welcome to your dashboard! Here you can manage your profile and explore matches.</p>
         {data ? (
             <pre>{JSON.stringify(data, null, 2)}</pre>
