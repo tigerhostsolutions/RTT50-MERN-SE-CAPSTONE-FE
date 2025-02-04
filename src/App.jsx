@@ -13,7 +13,7 @@ import Dashboard from './pages/Dashboard';
 import ProfileDashboard from './components/Dashboard/ProfileDashboard';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import './App.css';
-import './pages/css/Styles.css';
+import './pages/css/styles.css';
 
 function App() {
   return (
