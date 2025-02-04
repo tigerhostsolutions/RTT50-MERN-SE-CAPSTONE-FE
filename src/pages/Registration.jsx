@@ -183,6 +183,9 @@ const Registration = () => {
             <button type = "submit" className = "submit-button" >Register
             </button >
           </form >
+          <p className = "login-footer" >
+            Already have an account? <a href = "/login" target = "_blank" >Login</a >
+          </p >
         </div >
       </div >
   );
