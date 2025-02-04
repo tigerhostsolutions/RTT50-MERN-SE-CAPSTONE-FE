@@ -25,20 +25,33 @@ const Registration = () => {
       formData.append('password', password);
 
       // Add the profile image if the user uploaded it
-      const fileInput = document.getElementById('profileImage'); // Access the file input
+      const fileInput = document.getElementById('profileImage'); // Access the
+                                                                 // file input
       if (fileInput.files[0]) {
-        formData.append('photo', fileInput.files[0]); // Append the uploaded file
+        formData.append('photo', fileInput.files[0]); // Append the uploaded
+                                                      // file
       }
-
-      // Send API request using Axios
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/register`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Multipart request
-        },
-      });
-
-      // Handle success
-      setMessage(response.data.message || 'Registration successful!');
+      try {
+        // Send API request using Axios
+        const response = await axios.post(
+            `${process.env.VITE_APP_API_URL}/api/register`, formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data', // Multipart request
+              },
+            });
+        // Handle success
+        setMessage(response.data.message || 'Registration successful!');
+      }
+      catch (err) {
+        console.error('Error making the API call:', err);
+        if (err.response) {
+          setError(err.response.data.message ||
+              'An error occurred during registration.');
+        }
+        else {
+          setError('Unable to connect to the server. Please try again later.');
+        }
+      }
 
       // Clear form fields
       setName('');
@@ -47,11 +60,14 @@ const Registration = () => {
       setEmail('');
       setPassword('');
       fileInput.value = ''; // Clear file input
-    } catch (err) {
+    }
+    catch (err) {
       // Handle errors
       if (err.response && err.response.data) {
-        setError(err.response.data.message || 'An error occurred during registration.');
-      } else {
+        setError(err.response.data.message ||
+            'An error occurred during registration.');
+      }
+      else {
         // General or network error
         setError('Unable to connect to the server. Please try again later.');
       }
@@ -66,105 +82,109 @@ const Registration = () => {
         setPreviewImage(reader.result);
       };
       reader.readAsDataURL(file);
-    } else {
+    }
+    else {
       setPreviewImage('');
     }
   };
 
   return (
-      <div className="login-container">
-        <div className="login-card">
-          <h1 className="login-title">Create an Account</h1>
-          {message && <p className="success-message">{message}</p>}
-          {error && <p className="error-message">{error}</p>}
+      <div className = "login-container" >
+        <div className = "login-card" >
+          <h1 className = "login-title" >Create an Account</h1 >
+          {message && <p className = "success-message" >{message}</p >}
+          {error && <p className = "error-message" >{error}</p >}
 
-          <form onSubmit={handleSubmit} className="login-form">
-            <label htmlFor="name" className="form-label">Name</label>
+          <form onSubmit = {handleSubmit} className = "login-form" >
+            <label htmlFor = "name" className = "form-label" >Name</label >
             <input
-                type="text"
-                id="name"
-                name="name"
-                className="form-input"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                type = "text"
+                id = "name"
+                name = "name"
+                className = "form-input"
+                value = {name}
+                onChange = {(e) => setName(e.target.value)}
                 required
-                placeholder="Enter your name"
+                placeholder = "Enter your name"
             />
 
-            <label htmlFor="age" className="form-label">Age</label>
+            <label htmlFor = "age" className = "form-label" >Age</label >
             <input
-                type="number"
-                id="age"
-                name="age"
-                className="form-input"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
+                type = "number"
+                id = "age"
+                name = "age"
+                className = "form-input"
+                value = {age}
+                onChange = {(e) => setAge(e.target.value)}
                 required
-                placeholder="Enter your age"
+                placeholder = "Enter your age"
             />
 
-            <label htmlFor="gender" className="form-label">Gender</label>
+            <label htmlFor = "gender" className = "form-label" >Gender</label >
             <select
-                id="gender"
-                name="gender"
-                className="form-input"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
+                id = "gender"
+                name = "gender"
+                className = "form-input"
+                value = {gender}
+                onChange = {(e) => setGender(e.target.value)}
                 required
             >
-              <option value="">Select your gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
+              <option value = "" >Select your gender</option >
+              <option value = "male" >Male</option >
+              <option value = "female" >Female</option >
+              <option value = "other" >Other</option >
+            </select >
 
-            <label htmlFor="email" className="form-label">Email</label>
+            <label htmlFor = "email" className = "form-label" >Email</label >
             <input
-                type="email"
-                id="email"
-                name="email"
-                className="form-input"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type = "email"
+                id = "email"
+                name = "email"
+                className = "form-input"
+                value = {email}
+                onChange = {(e) => setEmail(e.target.value)}
                 required
-                placeholder="Enter your email"
+                placeholder = "Enter your email"
             />
 
-            <label htmlFor="password" className="form-label">Password</label>
+            <label htmlFor = "password"
+                   className = "form-label" >Password</label >
             <input
-                type="password"
-                id="password"
-                name="password"
-                className="form-input"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type = "password"
+                id = "password"
+                name = "password"
+                className = "form-input"
+                value = {password}
+                onChange = {(e) => setPassword(e.target.value)}
                 required
-                placeholder="Create a password"
+                placeholder = "Create a password"
             />
 
-            <label htmlFor="profileImage" className="form-label">Profile Image</label>
+            <label htmlFor = "profileImage" className = "form-label" >Profile
+                                                                      Image</label >
             <input
-                type="file"
-                id="profileImage"
-                name="profileImage"
-                className="form-input"
-                onChange={handleImageChange}
+                type = "file"
+                id = "profileImage"
+                name = "profileImage"
+                className = "form-input"
+                onChange = {handleImageChange}
             />
             {previewImage && (
-                <div className="image-preview-container">
-                  <p className="form-label">Image Preview:</p>
+                <div className = "image-preview-container" >
+                  <p className = "form-label" >Image Preview:</p >
                   <img
-                      src={previewImage}
-                      alt="Preview"
-                      className="image-preview"
+                      src = {previewImage}
+                      alt = "Preview"
+                      className = "image-preview"
                   />
-                </div>
+                </div >
             )}
 
-            <button type="submit" className="submit-button">Register</button>
-          </form>
-        </div>
-      </div>
+            <button type = "submit" className = "submit-button" >Register
+            </button >
+          </form >
+        </div >
+      </div >
   );
 };
 
