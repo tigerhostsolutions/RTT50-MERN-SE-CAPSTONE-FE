@@ -1,0 +1,15 @@
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav .active {
+    font-weight: bold;
+    color: blue;
+}
