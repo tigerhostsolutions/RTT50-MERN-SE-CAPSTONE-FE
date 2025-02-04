@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios'; // Import Axios
+import './css/Login.css';
 
 const Registration = () => {
   const [name, setName] = useState('');
@@ -70,91 +71,101 @@ const Registration = () => {
     }
   };
 
-  return (<div >
-    <h1 >Register</h1 >
-    {message && <p style = {{color: 'green'}} >{message}</p >}
-    {error && <p style = {{color: 'red'}} >{error}</p >}
+  return (
+      <div className="login-container">
+        <div className="login-card">
+          <h1 className="login-title">Create an Account</h1>
+          {message && <p className="success-message">{message}</p>}
+          {error && <p className="error-message">{error}</p>}
 
-    <form onSubmit = {handleSubmit} >
-      <label >Name:
-        <input
-            type = "text"
-            name = "name"
-            value = {name}
-            onChange = {(e) => setName(e.target.value)}
-            required
-        />
-      </label >
-      <br />
+          <form onSubmit={handleSubmit} className="login-form">
+            <label htmlFor="name" className="form-label">Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                className="form-input"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                placeholder="Enter your name"
+            />
 
-      <label >Age:
-        <input
-            type = "number"
-            name = "age"
-            value = {age}
-            onChange = {(e) => setAge(e.target.value)}
-            required
-        />
-      </label >
-      <br />
+            <label htmlFor="age" className="form-label">Age</label>
+            <input
+                type="number"
+                id="age"
+                name="age"
+                className="form-input"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                required
+                placeholder="Enter your age"
+            />
 
-      <label >Gender:
-        <select
-            name = "gender"
-            value = {gender}
-            onChange = {(e) => setGender(e.target.value)}
-            required
-        >
-          <option value = "" >Select</option >
-          {/* Empty value to enforce selection */}
-          <option value = "male" >Male</option >
-          <option value = "female" >Female</option >
-          <option value = "other" >Other</option >
-        </select >
-      </label >
-      <br />
+            <label htmlFor="gender" className="form-label">Gender</label>
+            <select
+                id="gender"
+                name="gender"
+                className="form-input"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                required
+            >
+              <option value="">Select your gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
 
-      <label >Email:
-        <input
-            type = "email"
-            name = "email"
-            value = {email}
-            onChange = {(e) => setEmail(e.target.value)}
-            required
-        />
-      </label >
-      <br />
+            <label htmlFor="email" className="form-label">Email</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                className="form-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Enter your email"
+            />
 
-      <label >Password:
-        <input
-            type = "password"
-            name = "password"
-            value = {password}
-            onChange = {(e) => setPassword(e.target.value)}
-            required
-        />
-      </label >
-      <br />
+            <label htmlFor="password" className="form-label">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                className="form-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="Create a password"
+            />
 
-      <label>Profile Image:
-        <input
-            type="file"
-            id="profileImage"
-            name="profileImage"
-            onChange={handleImageChange}
-        />
-      </label>
-      {previewImage && (
-          <div>
-            <p>Preview:</p>
-            <img src={previewImage} alt="Preview" style={{ maxWidth: '200px', maxHeight: '200px' }} />
-          </div>
-      )}
-      <br />
+            <label htmlFor="profileImage" className="form-label">Profile Image</label>
+            <input
+                type="file"
+                id="profileImage"
+                name="profileImage"
+                className="form-input"
+                onChange={handleImageChange}
+            />
+            {previewImage && (
+                <div className="image-preview-container">
+                  <p className="form-label">Image Preview:</p>
+                  <img
+                      src={previewImage}
+                      alt="Preview"
+                      className="image-preview"
+                  />
+                </div>
+            )}
 
-      <button type = "submit" >Register</button >
-    </form >
-  </div >);
+            <button type="submit" className="submit-button">Register</button>
+          </form>
+        </div>
+      </div>
+  );
 };
 
 export default Registration;
