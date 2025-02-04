@@ -8,11 +8,12 @@ const Dashboard = () => {
     console.error('No authentication token found!');
     // Redirect to login or show an error message
   }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:3000/dashboard', {
-          headers: { Authorization: `Bearer ${token}` },
+          // headers: { Authorization: `Bearer ${token}` },
         });
         setData(response.data);
       } catch (err) {
