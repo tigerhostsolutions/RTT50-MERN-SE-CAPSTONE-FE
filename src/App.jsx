@@ -5,6 +5,7 @@ import {
   Routes,
   Route,
   NavLink,
+  useNavigate,
 } from 'react-router-dom';
 import Registration from './pages/Registration';
 import Home from './pages/Home.jsx';
@@ -16,14 +17,24 @@ import './App.css';
 import './pages/css/styles.css';
 
 function App() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear user authentication details (e.g., token)
+    localStorage.removeItem("token");
+
+    // Redirect to the Login Page
+    navigate('/login');
+  };
+
   return (
       <Router >
-        <div className = "App" >
+        <div className="App">
           {/* Navigation */}
-          <header >
-            <nav >
-              <ul >
-                <li >
+          <header>
+            <nav>
+              <ul>
+                <li>
                   <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
                     Home
                   </NavLink>
@@ -36,32 +47,38 @@ function App() {
                   <NavLink to="/dashboard" className={({ isActive }) => (isActive ? "active" : "")}>
                     Dashboard
                   </NavLink>
-                </li >
-              </ul >
-            </nav >
-            <h1 >Social Match Makers</h1 >
-          </header >
+                  {/* Add Logout Button */}
+                  {localStorage.getItem("token") && (
+                      <button onClick={handleLogout} className="logout-button">
+                        Logout
+                      </button>
+                  )}
+                </li>
+              </ul>
+            </nav>
+            <h1>Social Match Makers</h1>
+          </header>
 
-          <Routes >
+          <Routes>
             {/*Public Routes*/}
-            <Route path = "/home" element = {<Home />} />
-            <Route path = "/register" element = {<Registration />} />
-            <Route path = "/login" element = {<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/register" element={<Registration />} />
+            <Route path="/login" element={<Login />} />
 
             {/*Protected Routes*/}
-            <Route path = "/dashboard" element = {
-              <ProtectedRoute >
+            <Route path="/dashboard" element={
+              <ProtectedRoute>
                 <Dashboard />
-              </ProtectedRoute >
+              </ProtectedRoute>
             } />
 
-            <Route path = "/dashboard/profile" element = {
-              <ProtectedRoute >
+            <Route path="/dashboard/profile" element={
+              <ProtectedRoute>
                 <ProfileDashboard />
-              </ProtectedRoute >
+              </ProtectedRoute>
             } />
           </Routes >
-        </div >
+        </div>
       </Router >
   );
 }

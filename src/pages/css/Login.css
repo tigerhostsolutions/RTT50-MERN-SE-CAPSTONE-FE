@@ -122,3 +122,27 @@ body {
   border-radius: 5px;
   border: 1px solid #d1d5db;
 }
+
+/* Logout Button */
+.logout-button {
+  background-color: #f87171; /* Red-ish color for logout */
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+  margin-left: 15px; /* Adds some spacing when placed in nav */
+}
+
+.logout-button:hover {
+  background-color: #ef4444; /* Darker red on hover */
+  box-shadow: 0 4px 6px rgba(239, 68, 68, 0.4); /* Slight shadow for hover effect */
+}
+
+.logout-button:active {
+  background-color: #dc2626; /* Even darker red for click action */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15); /* Inner shadow to indicate press */
+}
