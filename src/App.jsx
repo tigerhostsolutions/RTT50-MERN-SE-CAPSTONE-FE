@@ -10,7 +10,7 @@ import Registration from './pages/Registration';
 import Home from './pages/Home.jsx';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import ProfileDashboard from './components/Dashboard/ProfileDashboard';
+import ProfileDashboard from './components/Dashboard/DashboardProfile/ProfileDashboard.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import './App.css';
 import './pages/css/styles.css';

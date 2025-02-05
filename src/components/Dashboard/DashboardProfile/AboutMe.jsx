@@ -1,7 +1,7 @@
 // File: Bio.jsx
 import React, { useState } from "react";
 
-const Bio = () => {
+const AboutMe = () => {
   const [bio, setBio] = useState("Hello! This is my short bio.");
 
   const handleEdit = () => {
@@ -20,4 +20,4 @@ const Bio = () => {
   );
 };
 
-export default Bio;
+export default AboutMe;

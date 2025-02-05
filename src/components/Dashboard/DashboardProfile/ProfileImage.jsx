@@ -1,11 +1,11 @@
 // File: ProfileImage.jsx
 import React from "react";
 
-const ProfileImage = () => {
+const ProfileImage = ({ profileImageUrl }) => {
   return (
       <div className="profile-image">
         <img
-            src="https://via.placeholder.com/150"
+            src={profileImageUrl || "https://via.placeholder.com/150"}
             alt="Member Profile"
             width={150}
             height={150}
