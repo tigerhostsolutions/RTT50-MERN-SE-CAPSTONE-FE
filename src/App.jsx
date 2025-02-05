@@ -5,7 +5,6 @@ import {
   Routes,
   Route,
   NavLink,
-  useNavigate,
 } from 'react-router-dom';
 import Registration from './pages/Registration';
 import Home from './pages/Home.jsx';
@@ -15,17 +14,9 @@ import ProfileDashboard from './components/Dashboard/ProfileDashboard';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import './App.css';
 import './pages/css/styles.css';
+import LogoutButton from './components/LogoutButton.jsx';
 
 function App() {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    // Clear user authentication details (e.g., token)
-    localStorage.removeItem("token");
-
-    // Redirect to the Login Page
-    navigate('/login');
-  };
 
   return (
       <Router >
@@ -49,9 +40,7 @@ function App() {
                   </NavLink>
                   {/* Add Logout Button */}
                   {localStorage.getItem("token") && (
-                      <button onClick={handleLogout} className="logout-button">
-                        Logout
-                      </button>
+                   <LogoutButton />
                   )}
                 </li>
               </ul>

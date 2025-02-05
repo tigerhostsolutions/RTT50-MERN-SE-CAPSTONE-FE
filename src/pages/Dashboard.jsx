@@ -6,13 +6,12 @@ const Dashboard = () => {
   const token = localStorage.getItem('authToken');
   if (!token) {
     console.error('No authentication token found!');
-    // Redirect to login or show an error message
   }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiUrl = import.meta.env.VITE_API_BASE_URL;
+        const apiUrl = import.meta.env.VITE_APP_BASE_URL;
         const response = await axios.get(`${apiUrl}/api/dashboard`, {
           // headers: { Authorization: `Bearer ${token}` },
         });
