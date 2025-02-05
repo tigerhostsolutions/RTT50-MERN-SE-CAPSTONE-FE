@@ -24,24 +24,18 @@ function App() {
             <nav >
               <ul >
                 <li >
-                  <NavLink exact to = "/" activeClassName = "active" >
+                  <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
                     Home
-                  </NavLink >
-                </li >
-                <li >
-                  <NavLink to = "/register" activeClassName = "active" >
+                  </NavLink>
+                  <NavLink to="/register" className={({ isActive }) => (isActive ? "active" : "")}>
                     Register
-                  </NavLink >
-                </li >
-                <li >
-                  <NavLink to = "/login" activeClassName = "active" >
+                  </NavLink>
+                  <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "")}>
                     Login
-                  </NavLink >
-                </li >
-                <li >
-                  <NavLink to = "/dashboard" activeClassName = "active" >
+                  </NavLink>
+                  <NavLink to="/dashboard" className={({ isActive }) => (isActive ? "active" : "")}>
                     Dashboard
-                  </NavLink >
+                  </NavLink>
                 </li >
               </ul >
             </nav >
