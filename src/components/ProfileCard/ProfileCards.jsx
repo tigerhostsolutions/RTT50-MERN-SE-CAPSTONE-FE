@@ -6,8 +6,11 @@ const ProfileCards = ({ profiles }) => {
       <div className="profile-cards">
         {profiles.map((profile) => (
             <div key={profile.id} className="profile-card">
+              <div>{profile.photo}</div>
               <h3>{profile.name}</h3>
-              <p>{profile.role}</p>
+              <p>Gender: {profile.gender}</p>
+              <p>Age: {profile.age}</p>
+              <p>About Me: {profile.bio}</p>
             </div>
         ))}
       </div>
