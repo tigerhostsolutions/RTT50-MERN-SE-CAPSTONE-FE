@@ -12,6 +12,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx';
 import './App.css';
 import './pages/css/styles.css';
 import LogoutButton from './components/LogoutButton.jsx';
+import CreateNote from './components/Dashboard/note/CreateNote.jsx';
 
 function App() {
   return (
@@ -77,6 +78,15 @@ function App() {
                   </ProtectedRoute>
                 }
             />
+            <Route
+                path="/notes"
+                element={
+                  <ProtectedRoute>
+                    <CreateNote /> {/* Render your Create Note component */}
+                  </ProtectedRoute>
+                }
+            />
+
           </Routes>
         </div>
       </Router>

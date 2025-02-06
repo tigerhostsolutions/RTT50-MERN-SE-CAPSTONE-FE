@@ -7,29 +7,31 @@ const CreateNote = () => {
   const [message, setMessage] = useState(''); // For success/error message
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent page reload on form submission
-
-    if (!title || !content) {
-      setMessage('Both title and content are required!');
-      return;
-    }
+    e.preventDefault(); // Prevent reload
 
     try {
-      const response = await axios.post('http://localhost:5000/api/notes', {
-        title,
-        content,
-        userId: 'some-user-id', // Replace with the actual userId
-      });
+      const token = localStorage.getItem('token'); // Assuming you store the token in localStorage
 
-      console.log('Note created successfully:', response.data);
+      const response = await axios.post(
+          'http://localhost:5000/api/members/notes',
+          {
+            title,
+            content,
+            userId: 'some-user-id', // Add a valid userId dynamically, if applicable
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // Include Bearer token for authentication
+            },
+          }
+      );
+
       setMessage('Note created successfully!');
-
-      // Clear the form after successful submission
       setTitle('');
       setContent('');
     } catch (error) {
       console.error('Error while creating note:', error);
-      setMessage('Failed to create note. Please try again later.');
+      setMessage('Failed to create the note. Authorization issue.');
     }
   };
 

@@ -12,7 +12,7 @@ const NotesDashboard = () => {
   const fetchNotes = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get('/api/notes', {
+      const { data } = await axios.get('/api/members/notes', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setNotes(data);
@@ -27,7 +27,7 @@ const NotesDashboard = () => {
   const addNote = async (noteContent) => {
     try {
       const { data } = await axios.post(
-          '/api/notes',
+          '/api/members/notes',
           { content: noteContent },
           { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
       );
@@ -41,7 +41,7 @@ const NotesDashboard = () => {
   const updateNote = async (id, content) => {
     try {
       const { data } = await axios.put(
-          `/api/notes/${id}`,
+          `/api/members/notes/${id}`,
           { content },
           { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
       );
@@ -54,7 +54,7 @@ const NotesDashboard = () => {
   // Delete an existing note (also used by NoteList)
   const deleteNote = async (id) => {
     try {
-      await axios.delete(`/api/notes/${id}`, {
+      await axios.delete(`/api/members/notes/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id)); // Remove from list
