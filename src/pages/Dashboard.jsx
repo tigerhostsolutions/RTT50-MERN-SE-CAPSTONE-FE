@@ -3,6 +3,8 @@ import axios from 'axios';
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
+  const [profiles, setProfiles] = useState([]);
+  const [loadingProfiles, setLoadingProfiles] = useState(true);
   const token = localStorage.getItem('authToken');
 
   useEffect(() => {
@@ -14,6 +16,7 @@ const Dashboard = () => {
 
     const fetchData = async () => {
       try {
+        // Fetch general dashboard data
         const apiUrl = import.meta.env.VITE_APP_BASE_URL;
         if (!apiUrl) {
           throw new Error('API base URL is not configured in environment variables.');
@@ -23,8 +26,17 @@ const Dashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         setData(response.data);
+
+        // Fetch profiles for dashboard
+        const profilesResponse = await axios.get(`${apiUrl}/api/dashboard/profiles`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setProfiles(profilesResponse.data.profiles);
+
       } catch (err) {
         console.error('Error fetching dashboard data:', err);
+      } finally {
+        setLoadingProfiles(false);
       }
     };
 
@@ -38,7 +50,28 @@ const Dashboard = () => {
         {data ? (
             <pre>{JSON.stringify(data, null, 2)}</pre>
         ) : (
-             <p>Loading...</p>
+             <p>Loading general dashboard data...</p>
+         )}
+
+        <h2>Your Profiles</h2>
+        {loadingProfiles ? (
+            <p>Loading profiles...</p>
+        ) : (
+            <div className="profiles-grid">
+              {profiles.map((profile) => (
+                  <div key={profile.id} className="profile-card">
+                    <h3>{profile.name}</h3>
+                    <p>{profile.bio}</p>
+                    <button
+                        onClick={() => {
+                          window.location.href = `api/dashboard/profile?id=${profile.id}`;
+                        }}
+                    >
+                      View Profile
+                    </button>
+                  </div>
+              ))}
+            </div>
          )}
       </div>
   );

@@ -23,33 +23,44 @@ function App() {
         <div className="App">
           {/* Navigation */}
           <header>
-            <nav>
-              <ul>
-                <li>
-                  <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
-                    Home
-                  </NavLink>
-                  <NavLink to="/register" className={({ isActive }) => (isActive ? "active" : "")}>
-                    Register
-                  </NavLink>
-                  <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "")}>
-                    Login
-                  </NavLink>
-                  <NavLink to="/dashboard" className={({ isActive }) => (isActive ? "active" : "")}>
-                    Dashboard
-                  </NavLink>
-                  {/* Add Logout Button */}
-                  {localStorage.getItem("token") && (
-                   <LogoutButton />
-                  )}
-                </li>
-              </ul>
-            </nav>
             <h1>Social Match Makers</h1>
-          </header>
+            <nav >
+              <ul >
+                <li >
+                  <NavLink to = "/" className = {({isActive}) => (isActive ?
+                                                                  'active' :
+                                                                  '')} >
+                    Home
+                  </NavLink >
+                  <NavLink to = "/register"
+                           className = {({isActive}) => (isActive ?
+                                                         'active' :
+                                                         '')} >
+                    Register
+                  </NavLink >
+                  <NavLink to = "/login"
+                           className = {({isActive}) => (isActive ?
+                                                         'active' :
+                                                         '')} >
+                    Login
+                  </NavLink >
+                  <NavLink to = "/dashboard"
+                           className = {({isActive}) => (isActive ?
+                                                         'active' :
+                                                         '')} >
+                    Dashboard
+                  </NavLink >
+                  {/* Add Logout Button */}
+                  {localStorage.getItem('token') && (
+                      <LogoutButton />
+                  )}
+                </li >
+              </ul >
+            </nav >
+          </header >
 
-          <Routes>
-            {/*Public Routes*/}
+          <Routes >
+          {/*Public Routes*/}
             <Route path="/home" element={<Home />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/login" element={<Login />} />

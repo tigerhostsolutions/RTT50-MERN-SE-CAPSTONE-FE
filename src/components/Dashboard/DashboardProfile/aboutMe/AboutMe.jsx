@@ -1,5 +1,6 @@
-// File: Bio.jsx
 import React, { useState } from "react";
+import './AboutMe.css'
+
 
 const AboutMe = () => {
   const [bio, setBio] = useState("Hello! This is my short bio.");

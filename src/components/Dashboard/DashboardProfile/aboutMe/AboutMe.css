@@ -1,0 +1,36 @@
+.user-bio {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-bio h2 {
+  color: #444;
+  font-size: 24px;
+}
+
+.user-bio p {
+  color: #666;
+  font-size: 16px;
+  margin: 14px 0;
+}
+
+.user-bio button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.user-bio button:hover {
+  background-color: #45a049;
+}
