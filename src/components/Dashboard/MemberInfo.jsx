@@ -1,6 +1,6 @@
 // File: UserInfo.jsx
 import React, { useEffect, useState } from "react";
-import ProfileSummary from "../../../partials/profileSummary.jsx"; // Reusable
+import ProfileSummary from "../../partials/profileSummary.jsx"; // Reusable
 // Component
 import axios from "axios"; // For API calls
 

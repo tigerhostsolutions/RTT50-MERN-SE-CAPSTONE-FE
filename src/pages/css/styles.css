@@ -1,3 +1,6 @@
+.dashboard-container {
+    margin-top: 75px; /* Ensure content is pushed below the header */
+}
 /* Reset default styles */
 nav ul {
     list-style: none;
@@ -8,16 +11,17 @@ nav ul {
     align-items: center;
 }
 
-/* Navigation container */
 header {
-    background: #ffffff; /* Clean white background */
-    padding: 10px 20px; /* Padding for spacing */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    position: sticky; /* Sticks to the top of the screen on scroll */
+    background: #ffffff;
+    padding: 8px 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
     top: 0;
-    z-index: 10; /* Ensures the nav is above other elements */
+    z-index: 10;
+    height: auto;
+    display: flex;
+    align-items: center;
 }
-
 /* Navigation links */
 nav a {
     text-decoration: none; /* Remove underline for links */
@@ -91,4 +95,19 @@ nav a:focus-visible {
 
 .profile-card p {
     color: #666;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 8px 15px; /* Add a bit more compact styling for mobile */
+        height: auto; /* Let it resize automatically */
+        flex-wrap: wrap; /* Ensure it doesn't occupy unnecessary space */
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem; /* Adjust spacing between links */
+        padding: 10px 0;
+    }
 }

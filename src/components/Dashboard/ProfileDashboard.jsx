@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom"; // Necessary to get the "id"
 import ProfileImage from "./ProfileImage.jsx";
 import MemberInfo from "./MemberInfo.jsx";
 import AboutMe from './aboutMe/AboutMe.jsx';
-import Note from './note/Note.jsx';
+import Note from './note/NotePosting.jsx';
 import axios from "axios";
 
 const ProfileDashboard = () => {

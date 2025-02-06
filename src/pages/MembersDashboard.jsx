@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProfileCards from "../components/ProfileCard/ProfileCards"; // Ensure path is correct
 
-const Dashboard = () => {
+const MembersDashboard = () => {
   const [profiles, setProfiles] = useState([]); // State to store profiles
   const [isLoading, setIsLoading] = useState(true); // State to manage loading status
   const [error, setError] = useState(null); // State to manage errors
@@ -63,4 +63,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default MembersDashboard;

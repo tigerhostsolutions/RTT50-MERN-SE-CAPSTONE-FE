@@ -3,6 +3,7 @@ import axios from 'axios';
 import NoteList from './NoteList';
 import NotePosting from './NotePosting';
 
+
 const NotesDashboard = () => {
   const [notes, setNotes] = useState([]); // Stores all notes
   const [loading, setLoading] = useState(false); // Loading state

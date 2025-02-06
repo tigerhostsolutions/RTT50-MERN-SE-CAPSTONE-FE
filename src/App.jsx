@@ -1,85 +1,85 @@
 // App.jsx
 import React from 'react';
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  NavLink,
+  BrowserRouter as Router, Routes, Route, NavLink,
 } from 'react-router-dom';
 import Registration from './pages/Registration';
 import Home from './pages/Home.jsx';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import ProfileDashboard from './components/Dashboard/DashboardProfile/ProfileDashboard.jsx';
+import MembersDashboard from './pages/MembersDashboard.jsx';
+import ProfileDashboard from './components/Dashboard/ProfileDashboard.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import './App.css';
 import './pages/css/styles.css';
 import LogoutButton from './components/LogoutButton.jsx';
 
 function App() {
-
   return (
-      <Router >
+      <Router>
         <div className="App">
           {/* Navigation */}
           <header>
             <h1>Social Match Makers</h1>
-            <nav >
-              <ul >
-                <li >
-                  <NavLink to = "/" className = {({isActive}) => (isActive ?
-                                                                  'active' :
-                                                                  '')} >
+            <nav>
+              <ul>
+                <li>
+                  <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
                     Home
-                  </NavLink >
-                  <NavLink to = "/register"
-                           className = {({isActive}) => (isActive ?
-                                                         'active' :
-                                                         '')} >
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/register" className={({ isActive }) => (isActive ? 'active' : '')}>
                     Register
-                  </NavLink >
-                  <NavLink to = "/login"
-                           className = {({isActive}) => (isActive ?
-                                                         'active' :
-                                                         '')} >
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/login" className={({ isActive }) => (isActive ? 'active' : '')}>
                     Login
-                  </NavLink >
-                  <NavLink to = "/dashboard"
-                           className = {({isActive}) => (isActive ?
-                                                         'active' :
-                                                         '')} >
-                    Dashboard
-                  </NavLink >
-                  {/* Add Logout Button */}
-                  {localStorage.getItem('token') && (
-                      <LogoutButton />
-                  )}
-                </li >
-              </ul >
-            </nav >
-          </header >
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : '')}>
+                    Profiles
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/notes" className={({ isActive }) => (isActive ? 'active' : '')}>
+                    Notes
+                  </NavLink>
+                </li>
+                <li>
+                  {localStorage.getItem('token') && <LogoutButton />}
+                </li>
+              </ul>
+            </nav>
+          </header>
 
-          <Routes >
-          {/*Public Routes*/}
-            <Route path="/home" element={<Home />} />
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<Home />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/login" element={<Login />} />
 
-            {/*Protected Routes*/}
-            <Route path="/dashboard" element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            } />
-
-            <Route path="/dashboard/profile" element={
-              <ProtectedRoute>
-                <ProfileDashboard />
-              </ProtectedRoute>
-            } />
-          </Routes >
+            {/* Protected Routes */}
+            <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <MembersDashboard />
+                  </ProtectedRoute>
+                }
+            />
+            <Route
+                path="/dashboard/profile"
+                element={
+                  <ProtectedRoute>
+                    <ProfileDashboard />
+                  </ProtectedRoute>
+                }
+            />
+          </Routes>
         </div>
-      </Router >
+      </Router>
   );
 }
 

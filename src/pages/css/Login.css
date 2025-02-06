@@ -8,7 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Fullscreen height */
+  /*height: 100vh; !* Fullscreen height *!*/
   color: #333;
 }
 
